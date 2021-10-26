@@ -147,7 +147,6 @@ INSTALLED_APPS = [
     'taggit_autosuggest',
     'meta',
     'sortedm2m',
-    'djangocms_blog',
     'rest_framework',
     'oscarapi',
     'oscar_invoices',
@@ -172,6 +171,11 @@ INSTALLED_APPS = [
     'two_factor',
     'otp_yubikey',
     'djangocms_history',
+    'django_comments',
+    'mptt',
+    'tagging',
+    'zinnia',
+    'django_xmlrpc',
 ]
 
 TEMPLATES = [
@@ -277,6 +281,18 @@ CMS_TEMPLATES = (
     ('sidebar_right.html', 'Sidebar Right')
 )
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+    'comparison': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'comparison',
+        'TIMEOUT': None,
+}
+}
+
+
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 CMS_PERMISSION = True
@@ -286,9 +302,9 @@ CMS_PLACEHOLDER_CONF = {}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'alternatecms', # Please change Me
-        'USER': 'testuser', # Please change Me
-        'PASSWORD': 'Tester2021', # Please change Me
+        'NAME': 'alternatenotes', # Please change Me
+        'USER': 'postgres', # Please change Me
+        'PASSWORD': 'Libra1986', # Please change Me
         'HOST': 'localhost',
         'PORT': '5432',
     },

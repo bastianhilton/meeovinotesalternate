@@ -15,17 +15,17 @@ sources:
 
 ## The below source is for SQLite/Tuql databases (usually only need link to db file in your project)
 
-  - name: alternatecms
-    handler:
-      tuql:
-        db: ./db.sqlite3
+  #- name: alternatecms
+  #  handler:
+  #    tuql:
+  #      db: ./db.sqlite3
 
 ## The below source is for Postgraph Databases.
 
-  #- name: AlternateCMS
-  #  handler:
-  #    postgraphile:
-  #      connectionString: postgres://postgres:password@localhost/postgres
+  - name: AlternateCMS
+    handler:
+      postgraphile:
+        connectionString: postgres://postgres:Libra1986@localhost/alternatenotes
 
 ## The below source is for MongoDB Databases.
 

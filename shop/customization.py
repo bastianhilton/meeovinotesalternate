@@ -106,6 +106,10 @@ SIMPLEUI_CONFIG = {
             'name': 'Products',
             'models': [
               {
+                'name': 'Categories',
+                'url': 'catalogue/category'
+              },
+              {
                 'name': 'Products',
                 'url': 'catalogue/product/'
               }, {
@@ -189,6 +193,9 @@ SIMPLEUI_CONFIG = {
                 'url': 'address/useraddress/'
               },
             ]
+          },{
+            'name': 'Comments',
+            'url': 'django_comments/comment/'
           },{
             'name': 'Payment',
             'models': [
@@ -341,17 +348,17 @@ SIMPLEUI_CONFIG = {
             'models': [
               {
                 'name': 'Articles',
-                'url': 'djangocms_blog/post/'
+                'url': 'zinnia/entry/'
               }, {
                 'name': 'Blog Categories',
-                'url': 'djangocms_blog/blogcategory/'
+                'url': 'zinnia/category/'
               },  {
-                'name': 'Blog Configurations',
-                'url': 'djangocms_blog/blogconfig/'
+                'name': 'Tags',
+                'url': 'tagging/tag/'
               },
                 {
-                'name': 'Tags',
-                'url': 'taggit/tag/'
+                'name': 'List of Tags',
+                'url': 'tagging/taggeditem/'
               }
             ]
           }, {

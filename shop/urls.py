@@ -20,13 +20,30 @@ from django.contrib.auth.decorators import login_required
 from two_factor.gateways.twilio.urls import urlpatterns as tf_twilio_urls
 from two_factor.urls import urlpatterns as tf_urls
 from django.conf.urls.i18n import i18n_patterns
+from django.contrib.sitemaps.views import index
+from django.contrib.sitemaps.views import sitemap
+from zinnia.sitemaps import AuthorSitemap
+from zinnia.sitemaps import CategorySitemap
+from zinnia.sitemaps import EntrySitemap
+from zinnia.sitemaps import TagSitemap
 
 admin.autodiscover()
 
 def trigger_error(request):
     division_by_zero = 1 / 0
+    
+sitemaps = {
+'tags': TagSitemap,
+'blog': EntrySitemap,
+'authors': AuthorSitemap,
+'categories': CategorySitemap
+}
 
 urlpatterns = [
+    url(r'^sitemap.xml$', index, {'sitemaps': sitemaps}),
+    url(r'^sitemap-(?P<section>.+)\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    url(r'^weblog/', include('zinnia.urls')),
+    url(r'^comments/', include('django_comments.urls')),
     path('sentry-debug/', trigger_error),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     path("sitemap.xml", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
@@ -58,5 +75,5 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     
-admin.site.site_header = 'AlternateCMS' # Don't Remove
-admin.site.site_title = 'AlternateCMS' # Don't Remove
+admin.site.site_header = 'Meeovi Notes' # Don't Remove
+admin.site.site_title = 'Meeovi Notes' # Don't Remove
